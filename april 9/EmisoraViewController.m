@@ -69,13 +69,13 @@ NSURL *url;
     // Set the audio file
  
     
-    url = [NSURL URLWithString:@"http://peace.str3am.com:6810/live-96k.mp3"];
+    //url = [NSURL URLWithString:@"http://peace.str3am.com:6810/live-96k.mp3"];
     
   
-    self.avAsset = [AVURLAsset URLAssetWithURL:url options:nil];
-    self.playerItem = [AVPlayerItem playerItemWithAsset:self.avAsset];
-    self.audioPlayer = [AVPlayer playerWithPlayerItem:self.playerItem];
-    [self.audioPlayer play];
+    //self.avAsset = [AVURLAsset URLAssetWithURL:url options:nil];
+    //self.playerItem = [AVPlayerItem playerItemWithAsset:self.avAsset];
+    //self.audioPlayer = [AVPlayer playerWithPlayerItem:self.playerItem];
+    //[self.audioPlayer play];
    // NSLog(@"error %@", error);
     //Load RVC WWW
  
