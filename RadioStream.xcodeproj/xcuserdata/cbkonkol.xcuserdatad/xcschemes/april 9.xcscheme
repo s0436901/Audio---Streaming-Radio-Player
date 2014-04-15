@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0DFF3AD418F6314D005E0326"
-               BuildableName = "april 9.app"
+               BuildableName = "RadioStream.app"
                BlueprintName = "RadioStream"
                ReferencedContainer = "container:RadioStream.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0DFF3AF518F6314D005E0326"
-               BuildableName = "april 9Tests.xctest"
+               BuildableName = "RadioStreamTests.xctest"
                BlueprintName = "RadioStreamTests"
                ReferencedContainer = "container:RadioStream.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0DFF3AD418F6314D005E0326"
-            BuildableName = "april 9.app"
+            BuildableName = "RadioStream.app"
             BlueprintName = "RadioStream"
             ReferencedContainer = "container:RadioStream.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0DFF3AD418F6314D005E0326"
-            BuildableName = "april 9.app"
+            BuildableName = "RadioStream.app"
             BlueprintName = "RadioStream"
             ReferencedContainer = "container:RadioStream.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0DFF3AD418F6314D005E0326"
-            BuildableName = "april 9.app"
+            BuildableName = "RadioStream.app"
             BlueprintName = "RadioStream"
             ReferencedContainer = "container:RadioStream.xcodeproj">
          </BuildableReference>

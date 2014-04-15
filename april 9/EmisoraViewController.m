@@ -65,20 +65,12 @@ NSURL *url;
         @"http://out1.cmn.icy.abacast.com/wrtb-wrtbfmaac-64.m3u",@"http://out1.cmn.icy.abacast.com/wrtb-wrtbfmaac-64.m3u",
         @"http://out1.cmn.icy.abacast.com/wrtb-wrtbfmaac-64.m3u",@"http://out1.cmn.icy.abacast.com/wrtb-wrtbfmaac-64.m3u",
         @"http://out1.cmn.icy.abacast.com/wrtb-wrtbfmaac-64.m3u",@"http://out1.cmn.icy.abacast.com/wrtb-wrtbfmaac-64.m3u"];
-    
-    // Set the audio file
- 
-    
-    //url = [NSURL URLWithString:@"http://peace.str3am.com:6810/live-96k.mp3"];
-    
   
-    //self.avAsset = [AVURLAsset URLAssetWithURL:url options:nil];
-    //self.playerItem = [AVPlayerItem playerItemWithAsset:self.avAsset];
-    //self.audioPlayer = [AVPlayer playerWithPlayerItem:self.playerItem];
-    //[self.audioPlayer play];
-   // NSLog(@"error %@", error);
-    //Load RVC WWW
- 
+    //Make sure the system follows our playback status (needed to play audio in background)
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [[AVAudioSession sharedInstance] setActive: YES error: nil];
+    
      NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"banner" ofType:@"html"];
     NSURL *url=[NSURL fileURLWithPath:htmlFile];
     NSURLRequest *req = [NSURLRequest requestWithURL:url];
@@ -92,7 +84,49 @@ NSURL *url;
     // Dispose of any resources that can be recreated.
     
 }
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    
+    //Once the view has loaded then we can register to begin recieving controls and we can become the first responder
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
+}
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    //End recieving events
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    [self resignFirstResponder];
+}
+//Make sure we can recieve remote control events
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+    //if it is a remote control event handle it correctly
+    if (event.type == UIEventTypeRemoteControl) {
+        if (event.subtype == UIEventSubtypeRemoteControlPlay) {
+             [self.audioPlayer play];
+        } else if (event.subtype == UIEventSubtypeRemoteControlPause) {
+              [self.audioPlayer pause];
+        } else if (event.subtype == UIEventSubtypeRemoteControlTogglePlayPause) {
+            [self togglePlayPause];
+        }
+    }
+}
+- (void)togglePlayPause {
+    //Toggle if the music is playing or paused
+    if (!self.audioPlayer.playing) {
+        [self.audioPlayer play];
+        
+    } else if (self.audioPlayer.playing) {
+        [self.audioPlayer pause];
+        
+    }
+}
 - (IBAction)btnStop:(id)sender {
     
            self.btnStop.enabled = NO;
