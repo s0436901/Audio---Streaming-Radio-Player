@@ -12,6 +12,8 @@
 @end
 
 NSURL *url;
+NSString *dialname;
+
 @implementation EmisoraViewController
 @synthesize webview;
 
@@ -20,6 +22,7 @@ NSURL *url;
     
    
     url = [NSURL URLWithString:_dial[row]];
+    dialname=self.radiostations[row];
     self.avAsset = [AVURLAsset URLAssetWithURL:url options:nil];
     self.playerItem = [AVPlayerItem playerItemWithAsset:self.avAsset];
     self.audioPlayer = [AVPlayer playerWithPlayerItem:self.playerItem];
@@ -27,7 +30,14 @@ NSURL *url;
    
         self.btnStop.enabled = YES;
         self.btnPlay.enabled = NO;
-       
+    if (row==0)
+    {
+        self.btnShare.enabled=NO;
+    }
+    else{
+        self.btnShare.enabled=YES;
+    }
+
     
 }
 
@@ -49,7 +59,7 @@ NSURL *url;
 - (void)viewDidLoad
 
 {
- 
+  self.btnShare.enabled=NO;
     // Disable Stop/Play button when application launches
     [self.btnStop setEnabled:NO];
     [self.btnPlay setEnabled:NO];
@@ -128,7 +138,7 @@ NSURL *url;
     }
 }
 - (IBAction)btnStop:(id)sender {
-    
+      self.btnShare.enabled=NO;
            self.btnStop.enabled = NO;
         self.btnPlay.enabled = YES;
         [self.audioPlayer pause];
@@ -136,9 +146,22 @@ NSURL *url;
 }
 
 - (IBAction)btnPlay:(id)sender {
+      self.btnShare.enabled=YES;
     self.btnStop.enabled = YES;
     self.btnPlay.enabled = NO;
     [self.audioPlayer play];
 
+}
+- (IBAction)btnShare:(id)sender {
+    NSString *text = [NSString stringWithFormat:@"Listening to Radio Stream App:%@", dialname];
+   // NSURL *url = urls;
+    UIImage *image = [UIImage imageNamed:@"me.gif"];
+    
+    UIActivityViewController *controller =
+    [[UIActivityViewController alloc]
+     initWithActivityItems:@[text, url, image]
+     applicationActivities:nil];
+    
+    [self presentViewController:controller animated:YES completion:nil];
 }
 @end

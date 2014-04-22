@@ -53,11 +53,22 @@
                                     <action selector="btnPlay:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="vT6-6l-rKm"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1q-FT-CPX">
+                                <rect key="frame" x="140" y="518" width="40" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Share">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnShare:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="03F-sA-eyN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="btnPlay" destination="vLt-qK-oOa" id="lkI-Ki-fPV"/>
+                        <outlet property="btnShare" destination="N1q-FT-CPX" id="dcn-pZ-xUo"/>
                         <outlet property="btnStop" destination="tZM-bq-V8D" id="5Mx-U4-AiT"/>
                         <outlet property="picker" destination="YfX-Rf-VEu" id="YTO-2S-e81"/>
                         <outlet property="webview" destination="usI-fN-PFf" id="wmz-uc-Z0Q"/>

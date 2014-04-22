@@ -28,5 +28,7 @@
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 @property (strong, nonatomic) AVURLAsset *avAsset;
 @property (strong, nonatomic) AVPlayerItem *playerItem;
+- (IBAction)btnShare:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnShare;
 @end
